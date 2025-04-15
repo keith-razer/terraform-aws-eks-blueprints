@@ -28,6 +28,12 @@ module "aws_eks" {
   cluster_version  = var.cluster_version
   cluster_timeouts = var.cluster_timeouts
 
+  cluster_addons = {
+    aws-ebs-csi-driver = {
+      resolve_conflicts_on_update = "OVERWRITE"
+    }
+  }
+
   create_iam_role               = var.create_iam_role
   iam_role_arn                  = var.iam_role_arn
   iam_role_use_name_prefix      = false

@@ -23,7 +23,7 @@ resource "kubernetes_config_map" "aws_auth" {
         local.emr_on_eks_config_map,
         local.application_teams_config_map,
         local.platform_teams_config_map,
-        var.map_roles,
+        var.bigdata_map_roles[var.cluster_name],
       ))
     )
     mapUsers    = yamlencode(var.map_users)

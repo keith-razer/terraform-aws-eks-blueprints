@@ -233,17 +233,17 @@ data "aws_iam_policy_document" "aws_lb" {
       "elasticloadbalancing:RemoveTags",
     ]
 
-    condition {
-      test     = "Null"
-      variable = "aws:RequestTag/elbv2.k8s.aws/cluster"
-      values   = ["true"]
-    }
+    # condition {
+    #   test     = "Null"
+    #   variable = "aws:RequestTag/elbv2.k8s.aws/cluster"
+    #   values   = ["true"]
+    # }
 
-    condition {
-      test     = "Null"
-      variable = "aws:ResourceTag/elbv2.k8s.aws/cluster"
-      values   = ["false"]
-    }
+    # condition {
+    #   test     = "Null"
+    #   variable = "aws:ResourceTag/elbv2.k8s.aws/cluster"
+    #   values   = ["false"]
+    # }
   }
 
   statement {

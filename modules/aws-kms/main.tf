@@ -5,6 +5,10 @@ resource "aws_kms_key" "this" {
   enable_key_rotation     = var.enable_key_rotation
   deletion_window_in_days = var.deletion_window_in_days
   tags                    = var.tags
+
+  lifecycle {
+    ignore_changes = [policy]
+  }
 }
 
 # Assign an alias to the key

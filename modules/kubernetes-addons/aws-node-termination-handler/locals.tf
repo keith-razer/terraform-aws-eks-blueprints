@@ -5,11 +5,11 @@ locals {
 
   # https://github.com/aws/eks-charts/blob/master/stable/aws-node-termination-handler/Chart.yaml
   default_helm_config = {
-    name        = local.name
-    chart       = local.name
-    repository  = "https://aws.github.io/eks-charts"
-    version     = "0.21.0"
-    namespace   = local.namespace
+    name  = local.name
+    chart = "aws-node-termination-handler"
+    repository  = "oci://public.ecr.aws/aws-ec2/helm"
+    version     = "0.27.0"
+    namespace   = "kube-system"
     description = "AWS Node Termination Handler Helm Chart"
     values      = local.default_helm_values
   }
@@ -34,6 +34,10 @@ locals {
     },
     { name  = "queueURL"
       value = aws_sqs_queue.aws_node_termination_handler_queue.url
+    },
+    {
+      name  = "rbac.pspEnabled"
+      value = false
     }
   ]
 
