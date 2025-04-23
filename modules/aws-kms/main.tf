@@ -7,7 +7,7 @@ resource "aws_kms_key" "this" {
   tags                    = var.tags
 
   lifecycle {
-    ignore_changes = [policy]
+    ignore_changes = [policy, tags, tags_all]
   }
 }
 
